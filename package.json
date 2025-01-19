@@ -1,0 +1,25 @@
+{
+    "name": "eslint-plugin-sunny",
+    "version": "0.0.1",
+    "author": "天平 <1229248506@qq.com>",
+    "description": "eslint 插件",
+    "main": "dist/index.mjs",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "license": "MIT",
+    "homepage": "https://www.npmjs.com/package/types-tools",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Minori-ty/types-tools"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.7",
+        "@typescript-eslint/utils": "^8.20.0",
+        "eslint": "^9.18.0",
+        "tsup": "^8.3.5",
+        "typescript": "^5.7.3"
+    }
+}
