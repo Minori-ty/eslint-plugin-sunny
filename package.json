@@ -6,14 +6,17 @@
     "main": "dist/index.mjs",
     "type": "module",
     "types": "dist/index.d.ts",
+    "scripts": {
+        "test": "vitest"
+    },
     "publishConfig": {
         "access": "public"
     },
     "license": "MIT",
-    "homepage": "https://www.npmjs.com/package/types-tools",
+    "homepage": "https://github.com/Minori-ty/eslint-plugin-sunny",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Minori-ty/types-tools"
+        "url": "https://github.com/Minori-ty/eslint-plugin-sunny"
     },
     "devDependencies": {
         "@types/node": "^22.10.7",
@@ -23,8 +26,5 @@
         "tsup": "^8.3.5",
         "typescript": "^5.7.3",
         "vitest": "^3.0.2"
-    },
-    "scripts": {
-        "test": "vitest"
     }
 }
