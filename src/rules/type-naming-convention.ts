@@ -1,5 +1,5 @@
 /**
- * @fileoverview 强制接口以大写“I”开头, 类型以大写“T”开头, 枚举以大写“E”开头
+ * @fileoverview 强制接口以大写"I"开头, 类型以大写"T"开头, 枚举以大写"E"开头
  */
 
 import type { TSESLint } from '@typescript-eslint/utils'
@@ -10,7 +10,7 @@ const rule: TSESLint.RuleModule<TMessageId, []> = {
     meta: {
         type: 'problem',
         docs: {
-            description: '强制接口以大写“I”开头, 类型以大写“T”开头, 枚举以大写“E”开头',
+            description: '强制接口以大写"I"开头, 类型以大写"T"开头, 枚举以大写"E"开头',
         },
         fixable: 'code',
         schema: [],

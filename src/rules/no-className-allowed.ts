@@ -17,8 +17,8 @@ const rule: TSESLint.RuleModule<string, []> = {
         },
         schema: [],
     },
-    create(context) {
-        const fileName = path.basename(context.filename)
+    create(context: TSESLint.RuleContext<string, []>): TSESLint.RuleListener {
+        const fileName = path.basename(context.getFilename())
 
         // 检查文件名是否为 page.{js,ts,jsx,tsx}
         if (fileName.match(/page\.(js|ts|jsx|tsx)$/)) {
@@ -27,7 +27,7 @@ const rule: TSESLint.RuleModule<string, []> = {
                     if (node.name.name === 'className') {
                         context.report({
                             node,
-                            messageId: `在 ${fileName} 文件中不允许使用 className。`,
+                            messageId: 'className',
                         })
                     }
                 },
