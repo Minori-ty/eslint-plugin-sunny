@@ -35,6 +35,10 @@ const rule: TSESLint.RuleModule<string, []> = {
                     context.report({
                         node,
                         messageId: fileExt,
+                        fix: (fixer) => {
+                            // 删除 className 属性
+                            return fixer.remove(node)
+                        },
                     })
                 }
             },
