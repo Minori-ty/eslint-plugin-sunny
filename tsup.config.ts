@@ -5,8 +5,7 @@ export default defineConfig({
     outDir: 'dist',
     dts: true,
     clean: true,
-    sourcemap: true,
-    format: ['esm'],
+    format: ['esm', 'cjs'],
     tsconfig: './tsconfig.json',
-    outExtension: ({ format }) => ({ js: format === 'esm' ? '.mjs' : '.js' }),
+    external: ['tty', '@typescript-eslint/typescript-estree'],
 })

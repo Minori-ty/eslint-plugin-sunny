@@ -3,9 +3,16 @@
     "version": "0.0.1",
     "author": "天平 <1229248506@qq.com>",
     "description": "a eslint plugin for personal",
-    "main": "dist/index.mjs",
+    "main": "dist/index.js",
     "type": "module",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js"
+        }
+    },
     "scripts": {
         "test": "vitest"
     },
