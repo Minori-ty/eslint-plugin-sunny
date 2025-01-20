@@ -3,14 +3,14 @@
     "version": "0.0.1",
     "author": "天平 <1229248506@qq.com>",
     "description": "a eslint plugin for personal",
-    "main": "dist/index.js",
+    "main": "dist/index.cjs",
     "type": "module",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/index.mjs",
+            "import": "./dist/index.js",
             "types": "./dist/index.d.ts",
-            "require": "./dist/index.js"
+            "require": "./dist/index.cjs"
         }
     },
     "scripts": {

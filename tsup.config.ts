@@ -5,7 +5,7 @@ export default defineConfig({
     outDir: 'dist',
     dts: true,
     clean: true,
-    format: ['esm', 'cjs'],
+    format: ['cjs', 'esm'],
     tsconfig: './tsconfig.json',
     external: ['tty', '@typescript-eslint/typescript-estree'],
 })

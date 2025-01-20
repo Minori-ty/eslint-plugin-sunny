@@ -27,6 +27,9 @@ const rule: TSESLint.RuleModule<TMessageId, []> = {
                     context.report({
                         node,
                         messageId: 'interfaceName',
+                        fix: (fixer) => {
+                            return fixer.replaceText(node.id, `I${node.id.name}`)
+                        },
                     })
                 }
             },
@@ -35,6 +38,9 @@ const rule: TSESLint.RuleModule<TMessageId, []> = {
                     context.report({
                         node,
                         messageId: 'typeAliasName',
+                        fix: (fixer) => {
+                            return fixer.replaceText(node.id, `T${node.id.name}`)
+                        },
                     })
                 }
             },
@@ -43,6 +49,9 @@ const rule: TSESLint.RuleModule<TMessageId, []> = {
                     context.report({
                         node,
                         messageId: 'enumName',
+                        fix: (fixer) => {
+                            return fixer.replaceText(node.id, `E${node.id.name}`)
+                        },
                     })
                 }
             },
