@@ -46,6 +46,16 @@ ruleTester.run('require-tsdoc-if-not-jsx', rule, {
           }
           `,
         },
+        {
+            code: `
+/**
+ * @param name -
+ */
+export function sayHi(name: string) {
+  return \`Hi, \${name}\`;
+}
+                `,
+        },
     ],
     invalid: [
         {
@@ -65,22 +75,22 @@ ruleTester.run('require-tsdoc-if-not-jsx', rule, {
       `,
             errors: [{ messageId: 'missingTSDoc' }],
         },
-        // {
-        //     code: `
-        //   export function sayHi(name: string) {
-        //     return \`Hi, \${name}\`;
-        //   }
-        //   `,
-        //     output: `
-        //   /**
-        //    * @param name -
-        //    */
-        //   export function sayHi(name: string) {
-        //     return \`Hi, \${name}\`;
-        //   }
-        //   `,
-        //     errors: [{ messageId: 'missingTSDoc' }],
-        // },
+        {
+            code: `
+export function sayHi(name: string) {
+  return \`Hi, \${name}\`;
+}
+          `,
+            output: `
+/**
+ * @param name -
+ */
+export function sayHi(name: string) {
+  return \`Hi, \${name}\`;
+}
+          `,
+            errors: [{ messageId: 'missingTSDoc' }],
+        },
         {
             code: `
         function noParams() {

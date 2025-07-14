@@ -24,7 +24,7 @@ ruleTester.run('use-path-alias', rule, {
         },
         // 已使用别名的路径不报错
         {
-            code: "import { Button } from '@components/Button';",
+            code: "import { Button } from '@/components/Button';",
         },
     ],
 
@@ -33,6 +33,17 @@ ruleTester.run('use-path-alias', rule, {
         {
             code: "import { Button } from '../components/Button';",
             filename: 'C:\\project\\src\\pages\\Home.tsx',
+            errors: [
+                {
+                    messageId: 'useAlias',
+                    type: AST_NODE_TYPES.ImportDeclaration,
+                },
+            ],
+            output: "import { Button } from '@/components/Button';",
+        },
+        {
+            code: "import { Button } from './components/Button';",
+            filename: 'C:\\project\\src\\App.tsx',
             errors: [
                 {
                     messageId: 'useAlias',

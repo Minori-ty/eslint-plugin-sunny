@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-sunny",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "author": "天平 <1229248506@qq.com>",
     "description": "a eslint plugin for personal",
     "main": "dist/index.cjs",

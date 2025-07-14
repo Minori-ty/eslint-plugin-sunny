@@ -1,34 +1,43 @@
 /**
- * @fileoverview 使用 @ 路径别名代替相对路径
+ * @fileoverview 使用 @ 路径别名代替相对路径（仅当目标在 src 下）
  */
 
 import path from 'node:path'
-import { type TSESLint, type TSESTree } from '@typescript-eslint/utils'
-import { AST_NODE_TYPES } from '@typescript-eslint/typescript-estree'
+import { type TSESLint } from '@typescript-eslint/utils'
 
-const rule: TSESLint.RuleModule<string, []> = {
+const rule: TSESLint.RuleModule<'useAlias', []> = {
     meta: {
-        type: 'problem',
+        type: 'suggestion',
         docs: {
-            description: '使用 @ 路径别名代替相对路径',
+            description: '必须使用 @ 路径别名代替相对路径（仅当目标在 src 下）',
         },
         fixable: 'code',
         messages: {
-            useAlias: '使用 @ 路径别名代替相对路径',
+            useAlias: '必须使用 @ 路径别名代替相对路径',
         },
         schema: [],
     },
-    create(context): TSESLint.RuleListener {
-        const fileName = context.filename
+    create(context) {
+        const currentFilePath = context.filename // 当前文件的绝对路径
 
         return {
             ImportDeclaration(node) {
-                contextReport(context, node, node.source.value, 'useAlias', fileName)
-            },
-            ImportExpression(node) {
-                if (node.source.type === AST_NODE_TYPES.Literal && typeof node.source.value === 'string') {
-                    contextReport(context, node, node.source.value, 'useAlias', fileName)
-                }
+                const importSource = node.source.value // 'xxx/xxx' 这种路径字符串
+                if (typeof importSource !== 'string') return
+
+                // 如果是相对路径，解析为绝对路径
+                if (!importSource.startsWith('.')) return
+                const absolutePath = path.resolve(path.dirname(currentFilePath), importSource).replace(/\\/g, '/')
+
+                if (!absolutePath.includes('/src/')) return
+
+                const resetPath = absolutePath.split('src')[1]
+
+                context.report({
+                    node,
+                    messageId: 'useAlias',
+                    fix: (fixer) => fixer.replaceText(node.source, `'@${resetPath}'`),
+                })
             },
         }
     },
@@ -36,24 +45,3 @@ const rule: TSESLint.RuleModule<string, []> = {
 }
 
 export default rule
-
-function contextReport(
-    context: TSESLint.RuleContext<string, []>,
-    node: TSESTree.ImportDeclaration | TSESTree.ImportExpression,
-    value: string,
-    messageId: string,
-    filename: string
-) {
-    if (value.startsWith('../')) {
-        const absolutePath = path.resolve(path.dirname(filename), value)
-        const relativePath = 'src' + absolutePath.split('\\src')[1].replace(/\\/g, '/')
-
-        context.report({
-            node,
-            messageId,
-            fix: (fixer) => {
-                return fixer.replaceText(node.source, `'${relativePath.replace('src', '@')}'`)
-            },
-        })
-    }
-}

@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
+        "target": "es2024",
         "module": "ESNext",
         "lib": [
-            "ES2020"
+            "ESNext"
         ],
         "strict": true,
         "esModuleInterop": true,
