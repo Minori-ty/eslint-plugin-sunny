@@ -1,0 +1,40 @@
+{
+    "name": "eslint-plugin-sunny",
+    "version": "0.0.4",
+    "author": "天平 <1229248506@qq.com>",
+    "description": "a eslint plugin for personal",
+    "main": "dist/index.cjs",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "scripts": {
+        "test": "vitest run",
+        "build": "npx tsup"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/Minori-ty/eslint-plugin-sunny",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Minori-ty/eslint-plugin-sunny"
+    },
+    "devDependencies": {
+        "@types/node": "^22.16.3",
+        "@typescript-eslint/parser": "^8.36.0",
+        "@typescript-eslint/rule-tester": "^8.36.0",
+        "@typescript-eslint/typescript-estree": "^8.36.0",
+        "@typescript-eslint/utils": "^8.36.0",
+        "eslint": "^9.31.0",
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.4"
+    }
+}
