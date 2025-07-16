@@ -1,7 +1,9 @@
 {
     "name": "@root/base",
     "version": "1.0.0",
-    "scripts": {},
+    "scripts": {
+        "build": "pnpm -F eslint-plugin-sunny build"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",

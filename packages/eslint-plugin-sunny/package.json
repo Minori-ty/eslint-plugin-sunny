@@ -27,14 +27,14 @@
         "url": "https://github.com/Minori-ty/eslint-plugin-sunny"
     },
     "devDependencies": {
-        "@types/node": "^22.16.3",
-        "@typescript-eslint/parser": "^8.36.0",
+        "@types/node": "^24.0.14",
+        "@typescript-eslint/parser": "^8.37.0",
         "@typescript-eslint/rule-tester": "^8.36.0",
-        "@typescript-eslint/typescript-estree": "^8.36.0",
-        "@typescript-eslint/utils": "^8.36.0",
+        "@typescript-eslint/typescript-estree": "^8.37.0",
+        "@typescript-eslint/utils": "^8.37.0",
         "eslint": "^9.31.0",
-        "tsup": "^8.5.0",
-        "typescript": "^5.8.3",
+        "tsdown": "^0.12.9",
+        "vite-bundle-analyzer": "^1.1.0",
         "vitest": "^3.2.4"
     }
 }
